@@ -10,7 +10,7 @@ export const MODEL_RATES = {
 export const DEFAULT_RATE = 0.50;
 
 export function getRate(modelId) {
-  if (!modelId) return DEFAULT_RATE;
+  if (!modelId || typeof modelId !== "string") return DEFAULT_RATE;
   const key = Object.keys(MODEL_RATES).find(k => modelId.startsWith(k));
   return key ? MODEL_RATES[key] : DEFAULT_RATE;
 }

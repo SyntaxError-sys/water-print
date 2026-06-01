@@ -4,7 +4,7 @@ import { formatWater, getComparison } from "./src/format.js";
 import { getTokensFromTranscript } from "./src/transcript.js";
 import { updateAndGetStats } from "./src/stats.js";
 
-const VERSION = "1.0.0";
+const VERSION = "1.0.1";
 
 const HELP = `waterprint — AI water consumption tracker for Claude Code
 

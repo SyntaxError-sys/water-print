@@ -1,6 +1,6 @@
 {
   "name": "@syntaxerror-sys/water-print",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "AI water consumption tracker for Claude Code — turns tokens into liters",
   "type": "module",
   "main": "index.js",
