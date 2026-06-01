@@ -28,7 +28,7 @@ Claude Code setup (~/.claude/settings.json):
     "command": "waterprint"
   }
 
-Install: npm install -g water-print`;
+Install: npm install -g @syntaxerror-sys/water-print`;
 
 async function readStdin() {
   const chunks = [];

@@ -28,7 +28,7 @@ Add to `~/.claude/settings.json`:
 Or install globally for faster startup:
 
 ```bash
-npm install -g waterprint
+npm install -g @syntaxerror-sys/water-print
 ```
 
 Then use `"command": "waterprint"`.
