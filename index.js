@@ -4,7 +4,7 @@ import { formatWater, getComparison } from "./src/format.js";
 import { getTokensFromTranscript } from "./src/transcript.js";
 import { updateAndGetStats } from "./src/stats.js";
 
-const VERSION = "1.0.1";
+const VERSION = "1.0.2";
 
 const HELP = `waterprint — AI water consumption tracker for Claude Code
 
@@ -79,12 +79,14 @@ async function main() {
   const transcriptPath = data?.transcript_path ?? null;
 
   const cw = data?.context_window;
-  if (cw) {
-    const inp    = cw.total_input_tokens  ?? cw.current_usage?.input_tokens  ?? 0;
-    const out    = cw.total_output_tokens ?? cw.current_usage?.output_tokens ?? 0;
-    const cached = (cw.current_usage?.cache_read_input_tokens    ?? 0)
-                 + (cw.current_usage?.cache_creation_input_tokens ?? 0);
-    sessionTokens = inp + out + cached;
+  if (cw?.current_usage) {
+    const u = cw.current_usage;
+    sessionTokens = (u.input_tokens || 0)
+                  + (u.output_tokens || 0)
+                  + (u.cache_creation_input_tokens || 0)
+                  + (u.cache_read_input_tokens || 0);
+  } else if (cw) {
+    sessionTokens = (cw.total_input_tokens || 0) + (cw.total_output_tokens || 0);
   }
 
   if (sessionTokens === 0 && transcriptPath) {
